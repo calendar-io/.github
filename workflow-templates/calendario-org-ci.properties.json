@@ -1,7 +1,0 @@
-{
-  "name": "Calendar IO Organization Workflow",
-  "description": "Calendar IO Organization CI workflow template.",
-  "filePatterns": [
-    "package.json"
-  ]
-}
