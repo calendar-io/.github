@@ -1,0 +1,37 @@
+name: Calendar IO Organization CI
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+
+jobs:
+  node-install:
+    name: "Install dependencies"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Setup Node and PNPM"
+        uses: ./.github/actions/setup
+
+  check-lint:
+    name: "Lint check"
+    needs: node-install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Setup Node and PNPM"
+        uses: ./.github/actions/setup
+      - name: "Run Lint"
+        uses: ./.github/actions/lint
+
+  unit-test:
+    name: "Unit tests"
+    needs: node-install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Setup Node and PNPM"
+        uses: ./.github/actions/setup
+      - name: "Run Unit"
+        uses: ./.github/actions/unit
